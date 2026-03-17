@@ -21,7 +21,7 @@ export default function Skills() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_URL}/skills`)
+    fetch(`${VITE_APP_API_URL}/skills`)
       .then(res => res.json())
       .then(data => {
         setSkills(data);
