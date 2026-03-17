@@ -14,14 +14,14 @@ const categoryIcons = {
   'Additional Skills': <Terminal size={24} className="text-primary" />
 };
 
-const API_URL = process.env.VITE_APP_API_URL;
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export default function Skills() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_URL}/skills`)
+    fetch(`${API_URL}/api/skills`)
       .then(res => res.json())
       .then(data => {
         setSkills(data);

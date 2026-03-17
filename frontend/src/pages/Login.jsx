@@ -4,6 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { LogIn, Lock, User } from 'lucide-react';
 import SEO from '../components/SEO';
 
+const API_URL = import.meta.env.VITE_APP_API_URL;
+
 export default function Login() {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
@@ -21,7 +23,7 @@ export default function Login() {
     setError('');
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),

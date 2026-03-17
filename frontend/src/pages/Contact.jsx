@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Send, Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import SEO from '../components/SEO';
 
-const API_URL = '';
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', content: '' });

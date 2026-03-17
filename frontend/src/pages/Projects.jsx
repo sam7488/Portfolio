@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
-const API_URL = '';
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);

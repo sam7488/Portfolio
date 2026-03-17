@@ -4,6 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { Plus, Trash2, Edit2, LayoutDashboard, Briefcase, Code, PlusCircle, LogOut, X } from 'lucide-react';
 import SEO from '../components/SEO';
 
+const API_URL = import.meta.env.VITE_APP_API_URL;
+
 // ─── Reusable Modal Component ─────────────────────────────────
 function Modal({ title, isOpen, onClose, children }) {
   if (!isOpen) return null;
@@ -55,9 +57,9 @@ export default function Dashboard() {
     setLoading(true);
     try {
       const [pRes, eRes, sRes] = await Promise.all([
-        fetch('/api/projects'),
-        fetch('/api/experience'),
-        fetch('/api/skills'),
+        fetch(`${API_URL}/api/projects`),
+        fetch(`${API_URL}/api/experience`),
+        fetch(`${API_URL}/api/skills`),
       ]);
       setProjects(await pRes.json());
       setExperiences(await eRes.json());
@@ -76,7 +78,7 @@ export default function Dashboard() {
   const handleDelete = async (type, id) => {
     if (!window.confirm(`Are you sure you want to delete this ${type}?`)) return;
     try {
-      const res = await fetch(`/api/${type}/${id}`, {
+      const res = await fetch(`${API_URL}/api/${type}/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -112,7 +114,7 @@ export default function Dashboard() {
   const submitForm = async (e, type, formData) => {
     e.preventDefault();
     const isEditing = !!editingId;
-    const url = isEditing ? `/api/${type}/${editingId}` : `/api/${type}`;
+    const url = isEditing ? `${API_URL}/api/${type}/${editingId}` : `${API_URL}/api/${type}`;
     const method = isEditing ? 'PUT' : 'POST';
 
     try {

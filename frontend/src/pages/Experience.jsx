@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import SEO from '../components/SEO';
 
-const API_URL = '';
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export default function Experience() {
   const [experiences, setExperiences] = useState([]);
