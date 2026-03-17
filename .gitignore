@@ -1,0 +1,21 @@
+# node modules
+node_modules/
+
+# build files
+frontend/build/
+frontend/dist/
+
+# env files
+.env
+.env.*
+
+# logs
+logs
+*.log
+
+# OS files
+.DS_Store
+
+# Python (if backend uses it)
+__pycache__/
+*.pyc
